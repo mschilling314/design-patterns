@@ -19,7 +19,7 @@ Drink Order::_choose_drink(){
     std::cout << "Please press the number corresponding to your choice then hit enter:\n";
     std::cout << "1. Coffee\n";
     std::cout << "2. Latte\n";
-    std::cout << "3. Hot Chocolate\n\n"
+    std::cout << "3. Hot Chocolate\n\n";
     while (choice <= 0 || 3 < choice){
         std::cin >> choice;
         if (choice <= 0 || 3 < choice) std::cout << "Please try again.\n";
@@ -44,6 +44,7 @@ Drink Order::_choose_condiments(Drink d){
         std::cout << "2. Cream\n";
         std::cout << "3. Honey\n";
         std::cout << "4. Caramel\n";
+        std::cin >> choice;
         if (choice < 0 || 4 < choice) std::cout << "Invalid choice, please try again.\n";
         else {
             switch (choice){
@@ -72,12 +73,14 @@ void Order::_print_current_order(){
     for (int idx{0}; idx < len; ++idx){
         Drink d = this->items[idx];
         std::cout << idx + 1 << ". " << d.name;
-        int len_c {d.condiments.size()};
+        unsigned long len_c {d.condiments.size()};
         if (len_c){
-            std::cout << " with " << d.condiments[0];
+            std::cout << " with ";
+            std::cout << d.condiments[0].name;
             if (len_c > 1){
                 for (int idy{1}; idy < len_c; ++idy){
-                    std::cout << ", " << d.condiments[idy]
+                    std::cout << ", ";
+                    std::cout << d.condiments[idy].name;
                 }
             }
         }
@@ -95,14 +98,11 @@ void Order::_add_drink(){
 
 
 void Order::_remove_drink(int idx){
-    int last{this->items.size() - 2};
-
-    for (int i{idx}; i < last; ++i){
-        Drink temp = this->items[i];
-        this->items[i] = this->items[i+1];
-        this->items[i+1] = temp;
+    if (idx < 0 || idx >= this->items.size()) {
+        std::cout << "Invalid index!\n";
+        return;
     }
-    this->items.pop_back()
+    this->items.erase(this->items.begin() + idx);
 }
 
 
@@ -122,28 +122,34 @@ void Order::place_order(){
     Order::_add_drink();
     int choice{100};
     while (choice){
-        std::cout << "Nice choice!  Now, please choose from the following options, pressing the number corresponding to your option:\n"
+        std::cout << "Nice choice!  Now, please choose from the following options, pressing the number corresponding to your option:\n";
         std::cout << "0. Check out\n";
         std::cout << "1. Add another drink\n";
         std::cout << "2. Remove a drink\n";
         std::cin >> choice;
         switch (choice) {
             case 0:
-                float cost {Order::_calculate_total_cost()};
-                std::cout << "Thank you for shopping with us today!  That'll be $" << cost << "\nGoodbye now!\n\n";
-                return;
+                {
+                    float cost {Order::_calculate_total_cost()};
+                    std::cout << "Thank you for shopping with us today!  That'll be $" << cost << "\nGoodbye now!\n\n";
+                    return;
+                }
             case 1:
                 Order::_add_drink();
                 break;
             case 2:
-                int _drink_choice {0}
-                std::cout << "Please select the number corresponding to the drink you'd like to remove:\n";
-                Order::_print_current_order();
-                if (drink_choice && drink_choice < this->items.size()) Order::_remove_drink(drink_choice);
-                else std::cout << "Hmm that doesn't seem to be a valid choice...\n";
-                break;
+                {
+                    int drink_choice {0};
+                    std::cout << "Please select the number corresponding to the drink you'd like to remove:\n";
+                    Order::_print_current_order();
+                    std::cin >> drink_choice;
+                    if (drink_choice && drink_choice < this->items.size()) Order::_remove_drink(drink_choice);
+                    else std::cout << "Hmm that doesn't seem to be a valid choice...\n";
+                    break;
+                }
             default:
                 std::cout << "That wasn't a valid option.  Please try again.\n";
+                break;
         }
     }
 }

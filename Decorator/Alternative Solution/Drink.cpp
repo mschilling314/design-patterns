@@ -6,6 +6,7 @@ float Drink::calculate_cost(){
     for (auto condiment: this->condiments){
         cost += condiment.cost;
     }
+    return cost;
 }
 
 
@@ -15,7 +16,7 @@ void Drink::add_condiment(Condiment cond){
 
 void Drink::remove_condiment(const Condiment &cond){
     int idx{0};
-    int len{this->condiments.size()};
+    unsigned long len{this->condiments.size()};
     while (idx < len) {
         if (this->condiments[idx].name == cond.name){
             this->condiments[idx] = this->condiments[len - 1];
