@@ -8,7 +8,7 @@
 void BigList::generate_random(int n){
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dist(1, 100);
+    std::uniform_int_distribution<int> dist(-this->els * 5, this->els * 5);
     for (int idx{0}; idx < n; ++idx){
         int x = dist(gen);
         this->lst.push_back(x);
