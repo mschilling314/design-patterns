@@ -10,3 +10,4 @@ All solutions should be functional if there's a ```main.exe``` file present in t
 ## List of Finished Solutions
 - Decorator
     - Alternate Solution
+- Strategy
