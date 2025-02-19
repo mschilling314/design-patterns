@@ -5,4 +5,4 @@ This repo will serve as an implementation of the examples found in the book [Hea
 In some instances, there will be extra solutions in the case where I think the pattern is sub-optimal for the example problem given, such as the Decorator pattern.  In that case, each solution will be separated into their own directory, and another README will be provided explaining the pattern, the solutions, and why I believe my own solution to be more optimal for that particular problem.
 
 ## Running Solutions
-All solutions should be functional, you can run them from the command line/terminal by navigating to the directory (exammple from project root: ```cd Decorator/Alternative\ Solution```) and then doing ```./main.exe```
+All solutions should be functional if there's a ```main.exe``` file present in that directory.  You can run them from the command line/terminal by navigating to the directory (exammple from project root: ```cd Decorator/Alternative\ Solution```) and then doing ```./main.exe```, in some cases this will be interactive (the Decorator solutions), in others they'll be more print-y or passive.
