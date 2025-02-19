@@ -14,7 +14,9 @@
 
 
 int main(){
+    Order order {};
 
+    order.place_order();
 
 
     return 0;

@@ -8,13 +8,17 @@
 class Order{
     private:
         std::vector<Drink> items;
+        Drink _choose_drink();
+        Drink _choose_condiments(Drink d);
+        void _print_current_order();
+        void _add_drink();
+        void _remove_drink(int idx);
+        float _calculate_total_cost();
 
     public:
-        void add_drink();
+        void place_order();
 
-        void remove_drink(int idx);
-
-}
+};
 
 
 
