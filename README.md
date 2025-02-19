@@ -6,3 +6,7 @@ In some instances, there will be extra solutions in the case where I think the p
 
 ## Running Solutions
 All solutions should be functional if there's a ```main.exe``` file present in that directory.  You can run them from the command line/terminal by navigating to the directory (exammple from project root: ```cd Decorator/Alternative\ Solution```) and then doing ```./main.exe```, in some cases this will be interactive (the Decorator solutions), in others they'll be more print-y or passive.
+
+## List of Finished Solutions
+- Decorator
+    - Alternate Solution
