@@ -22,6 +22,7 @@ Drink Order::_choose_drink(){
     std::cout << "3. Hot Chocolate\n\n";
     while (choice <= 0 || 3 < choice){
         std::cin >> choice;
+        std::cout << '\n';
         if (choice <= 0 || 3 < choice) std::cout << "Please try again.\n";
     }
 
@@ -45,6 +46,7 @@ Drink Order::_choose_condiments(Drink d){
         std::cout << "3. Honey\n";
         std::cout << "4. Caramel\n";
         std::cin >> choice;
+        std::cout << '\n';
         if (choice < 0 || 4 < choice) std::cout << "Invalid choice, please try again.\n";
         else {
             switch (choice){
@@ -127,6 +129,7 @@ void Order::place_order(){
         std::cout << "1. Add another drink\n";
         std::cout << "2. Remove a drink\n";
         std::cin >> choice;
+        std::cout << '\n';
         switch (choice) {
             case 0:
                 {
@@ -145,6 +148,7 @@ void Order::place_order(){
                     std::cout << "Please select the number corresponding to the drink you'd like to remove:\n";
                     Order::_print_current_order();
                     std::cin >> drink_choice;
+                    std::cout << '\n';
                     if (drink_choice && drink_choice < this->items.size()) Order::_remove_drink(drink_choice - 1);
                     else std::cout << "Hmm that doesn't seem to be a valid choice...\n";
                     break;
