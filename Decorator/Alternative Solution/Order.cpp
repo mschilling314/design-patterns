@@ -131,7 +131,9 @@ void Order::place_order(){
             case 0:
                 {
                     float cost {Order::_calculate_total_cost()};
-                    std::cout << "Thank you for shopping with us today!  That'll be $" << cost << "\nGoodbye now!\n\n";
+                    std::cout << "Thank you for shopping with us today! You ordered:\n";
+                    Order::_print_current_order();
+                    std::cout << "That'll be $" << cost << "\nGoodbye now!\n\n";
                     return;
                 }
             case 1:
@@ -143,7 +145,7 @@ void Order::place_order(){
                     std::cout << "Please select the number corresponding to the drink you'd like to remove:\n";
                     Order::_print_current_order();
                     std::cin >> drink_choice;
-                    if (drink_choice && drink_choice < this->items.size()) Order::_remove_drink(drink_choice);
+                    if (drink_choice && drink_choice < this->items.size()) Order::_remove_drink(drink_choice - 1);
                     else std::cout << "Hmm that doesn't seem to be a valid choice...\n";
                     break;
                 }
