@@ -11,5 +11,4 @@ Then, at runtime, you can have observer objects that subscribe to the subject by
 We can have our weather data be the subject class (```WeatherData```), with the displays implementing the observer interface.  If you run ```main.exe```, random values for temperature, pressure, and humidity will be generated and then displayed in the console via a ```CurrentCoditionsDisplay``` object.
 
 # To Do
-- Debug Segmentation Fault
 - Consider trying to update to use an actual API to get weather data

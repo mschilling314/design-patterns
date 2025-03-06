@@ -10,9 +10,14 @@ void WeatherData::registerObserver(Observer* o){
 }
 
 void WeatherData::removeObserver(Observer* o){
-    for (auto it = this->subscribed.begin(); it != this->subscribed.end(); ++it) {
-        if (*it == o) {
-            this->subscribed.erase(it);
+    size_t lenny = this->subscribed.size();
+    for (size_t idx{0}; idx < lenny;){
+        if (o == this->subscribed[idx]){
+            this->subscribed[idx] =  this->subscribed[lenny-1];
+            this->subscribed.pop_back();
+            --lenny;
+        } else {
+            ++idx;
         }
     }
 }
